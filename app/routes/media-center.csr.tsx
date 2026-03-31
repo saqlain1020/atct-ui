@@ -17,17 +17,13 @@ export default function CSR() {
         image="/media/csr/banner.jpg"
       />
 
-      {/* Top image band */}
-      <section className="relative h-48 md:h-64 overflow-hidden">
-        <img
-          src="/media/csr/csr.jpg"
-          alt="CSR initiatives"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-navy-900/50 flex items-center justify-center">
-          <p className="text-white text-xl md:text-2xl font-bold text-center px-4">
-            Investing in People, Education & Community
-          </p>
+      <section className="py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <img
+            src="/media/csr/csr.jpg"
+            alt="CSR initiatives"
+            className="w-full h-auto rounded-xl"
+          />
         </div>
       </section>
 
