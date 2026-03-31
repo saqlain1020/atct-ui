@@ -26,72 +26,84 @@ const machines = [
     name: "Bonino Carding Machines",
     description: "Cotton cards, Non-woven cards, woolen cards, Fiber preparation machines, rotary cutter and tearing machines",
     logo: BoninoLogo,
+    machineImage: "/machinery/bonino.jpg",
     tall: true,
   },
   {
     name: "Bräcker",
     description: "Ring Spinning Components",
     logo: BrackerLogo,
+    machineImage: null,
     tall: false,
   },
   {
     name: "Fadis",
     description: "Winding & Rewinding Machines",
     logo: FadisLogo,
+    machineImage: "/machinery/fadis.jpg",
     tall: false,
   },
   {
     name: "Margasa",
     description: "Hard & Soft Waste Recycling Line",
     logo: MargasaLogo,
+    machineImage: "/machinery/margasa.png",
     tall: false,
   },
   {
     name: "Muller",
     description: "Narrow fabric and woven label machines",
     logo: MullerLogo,
+    machineImage: "/machinery/muller.jpg",
     tall: true,
   },
   {
     name: "Neuenhauser",
     description: "Palletising & Cone Transport Systems",
     logo: NeuenhauserLogo,
+    machineImage: "/machinery/neuenhauser.jpg",
     tall: false,
   },
   {
     name: "Novibra",
     description: "High Speed Spindles",
     logo: NovibraLogo,
+    machineImage: null,
     tall: false,
   },
   {
     name: "Saurer Jintan",
     description: "Blowroom and carding machines",
     logo: SaurerJintanLogo,
+    machineImage: "/machinery/saurer-jintan.jpg",
     tall: false,
   },
   {
     name: "Saurer Twisting Solutions",
     description: "Two-For-One Twisting Machines",
     logo: SaurerLogo,
+    machineImage: "/machinery/saurer-twisting.jpg",
     tall: true,
   },
   {
     name: "Sohler",
     description: "Overhead Blowers & Material Transport System",
     logo: SohlerLogo,
+    machineImage: "/machinery/sohler.jpg",
     tall: false,
   },
   {
     name: "Suessen",
     description: "EliTe Compact, CompactApron & CompactEasy Systems",
     logo: SuessenLogo,
+    machineImage: "/machinery/suessen.png",
     tall: false,
   },
   {
     name: "Wuxi Hong Yuan",
     description: "Draw texturizing machines",
     logo: WuxiLogo,
+    machineImage: "/machinery/wuxi.jpg",
     tall: true,
   },
 ];
@@ -102,7 +114,7 @@ export default function MachinesAndSystems() {
       <PageBanner
         title="Machines and Systems"
         subtitle="Innovative and Sustainable"
-        image="/images/photo-1565043589149-26ae5c0d59e3-w1920.jpg"
+        image="/machinery/banner.jpg"
       />
 
       <section className="py-16">
@@ -115,6 +127,13 @@ export default function MachinesAndSystems() {
                   machine.tall ? "row-span-2" : ""
                 }`}
               >
+                {machine.machineImage && (
+                  <img
+                    src={machine.machineImage}
+                    alt={`${machine.name} machinery`}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                )}
                 <div className="absolute inset-0 flex items-center justify-center p-8 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
                   <img
                     src={machine.logo}
@@ -122,7 +141,7 @@ export default function MachinesAndSystems() {
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex flex-col items-center justify-center p-6 text-center opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                <div className="absolute inset-0 bg-linear-to-br from-navy-900/90 to-atc-blue/80 flex flex-col items-center justify-center p-6 text-center opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
                   <h3 className="text-white font-bold text-xl mb-3">
                     {machine.name}
                   </h3>
