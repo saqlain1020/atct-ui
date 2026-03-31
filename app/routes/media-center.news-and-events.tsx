@@ -59,7 +59,7 @@ export default function NewsAndEvents() {
                     />
                   </div>
                   <div className="p-6">
-                    <span className="text-atc-green text-xs font-semibold uppercase tracking-wider">
+                    <span className="text-atc-red text-xs font-semibold uppercase tracking-wider">
                       {item.date}
                     </span>
                     <h3 className="text-xl font-bold text-navy-900 mt-2 group-hover:text-atc-green transition-colors">

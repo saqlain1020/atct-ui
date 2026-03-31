@@ -58,7 +58,7 @@ export default function ContactUs() {
                 </div>
                 <button
                   type="submit"
-                  className="bg-atc-green hover:bg-atc-green-dark text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+                  className="bg-atc-red hover:bg-atc-red-dark text-white font-semibold px-8 py-3 rounded-lg transition-colors"
                 >
                   Send Message
                 </button>

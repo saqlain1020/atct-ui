@@ -45,7 +45,7 @@ export default function Overview() {
           <h2 className="text-3xl font-bold text-navy-900 mb-4">
             ATC Technology Consultants' Values and Principles
           </h2>
-          <div className="w-16 h-1 bg-atc-green mx-auto rounded-full" />
+          <div className="w-16 h-1 bg-atc-red mx-auto rounded-full" />
         </div>
       </section>
 

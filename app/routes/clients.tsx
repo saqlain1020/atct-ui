@@ -31,9 +31,16 @@ const southClients = [
   "Yunus Brothers Group",
 ];
 
+function clientSeed(name: string, offset: number) {
+  let hash = offset;
+  for (let i = 0; i < name.length; i++) hash = hash * 31 + name.charCodeAt(i);
+  return Math.abs(hash) % 1000;
+}
+
 export default function Clients() {
   const [tab, setTab] = useState<"north" | "south">("north");
   const clients = tab === "north" ? northClients : southClients;
+  const seedOffset = tab === "north" ? 0 : 500;
 
   return (
     <>
@@ -50,7 +57,7 @@ export default function Clients() {
               onClick={() => setTab("north")}
               className={`px-6 py-3 rounded-lg font-semibold text-sm transition-colors ${
                 tab === "north"
-                  ? "bg-atc-green text-white"
+                  ? "bg-atc-red text-white"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -60,7 +67,7 @@ export default function Clients() {
               onClick={() => setTab("south")}
               className={`px-6 py-3 rounded-lg font-semibold text-sm transition-colors ${
                 tab === "south"
-                  ? "bg-atc-green text-white"
+                  ? "bg-atc-red text-white"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -69,12 +76,22 @@ export default function Clients() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {clients.map((name) => (
+            {clients.map((name, i) => (
               <div
                 key={name}
-                className="bg-white border border-gray-200 rounded-xl p-5 flex items-center justify-center h-28 hover:border-atc-green/50 hover:shadow-md transition-all text-center"
+                className="client-card relative rounded-xl overflow-hidden h-36 cursor-default"
               >
-                <span className="text-navy-800 text-sm font-medium">{name}</span>
+                <img
+                  src={`https://picsum.photos/seed/${clientSeed(name, seedOffset + i)}/300/200`}
+                  alt={name}
+                  className="client-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/10" />
+                <div className="absolute inset-0 flex items-center justify-center p-3">
+                  <span className="client-name text-white text-sm font-bold text-center drop-shadow-lg bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
+                    {name}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

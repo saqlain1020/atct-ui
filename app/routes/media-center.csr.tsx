@@ -42,19 +42,19 @@ export default function CSR() {
             </div>
             <ul className="space-y-3 text-gray-700 leading-relaxed">
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants has always promoted new technologies.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>The Group's employees are continuously engaged in acquiring knowledge through seminars, training workshops and written materials.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>Due to the ATC Technology Consultants' standing in textile sector, its Chairman is a member of Textile Engineering Board since 2002, which formulates policies for Engineering Industry. He is also a member on the Federal Textile Board since 2003, which devises textile policies.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>At National Textile University, Faisalabad, ATC Technology Consultants has had the honor of serving on the Academic Council and Board of Governors.</span>
               </li>
             </ul>
@@ -69,27 +69,27 @@ export default function CSR() {
             </div>
             <ul className="space-y-3 text-gray-700 leading-relaxed">
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants is the only indenting company who is on the Board of National Textile University, Faisalabad – country's only Textile University. Our Chairman is the Founder Member and on Board of Governor since 2001.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants is likewise institutional member of Textile Institute of Pakistan, degree awarding Textile College in Karachi.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants is promoting Adult Literacy Programme throughout Textile Industry in collaboration with All Pakistan Textile Mills Association.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants was, through its Chairman, on the Board of Governor of Pakistan Institute of Management, the oldest management institute of Pakistan (2003-2005).</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants Chairman was heading the National Advisory Committee affiliated body of the Textile Institute of Manchester from the year 1988 – 2000. He was also heading the Textile Institute of Manchester (Pakistan Section) from 1978 – 1988.</span>
               </li>
               <li className="flex gap-3">
-                <span className="w-2 h-2 bg-atc-green rounded-full mt-2 shrink-0" />
+                <span className="w-2 h-2 bg-atc-red rounded-full mt-2 shrink-0" />
                 <span>ATC Technology Consultants has always offered merit-based scholarship to deserving candidates from humble backgrounds, and then sought to provide them with opportunities within the Group, as well as the larger industry.</span>
               </li>
             </ul>

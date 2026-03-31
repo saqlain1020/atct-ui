@@ -62,7 +62,7 @@ export default function OurTeam() {
                   <h3 className="text-xl font-bold text-navy-900 group-hover:text-atc-green transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-atc-green font-medium text-sm mt-1">{member.role}</p>
+                  <p className="text-atc-red font-medium text-sm mt-1">{member.role}</p>
                   <p className="text-gray-500 text-xs mt-2">Click to read bio</p>
                 </div>
               </button>
@@ -94,7 +94,7 @@ export default function OurTeam() {
               />
               <div>
                 <h3 className="text-2xl font-bold text-navy-900">{team[activeBio].name}</h3>
-                <p className="text-atc-green font-semibold">{team[activeBio].role}</p>
+                <p className="text-atc-red font-semibold">{team[activeBio].role}</p>
               </div>
             </div>
             <div className="text-gray-700 leading-relaxed whitespace-pre-line text-sm">

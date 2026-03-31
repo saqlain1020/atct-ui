@@ -29,7 +29,7 @@ export function SectionHeading({ overline, title, subtitle, light }: SectionHead
           {subtitle}
         </p>
       )}
-      <div className="mt-4 w-16 h-1 bg-atc-green mx-auto rounded-full" />
+      <div className="mt-4 w-16 h-1 bg-atc-red mx-auto rounded-full" />
     </div>
   );
 }

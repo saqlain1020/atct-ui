@@ -52,7 +52,7 @@ export default function Gallery() {
                   <h3 className="font-bold text-navy-900 group-hover:text-atc-green transition-colors">
                     {g.name}
                   </h3>
-                  <span className="text-atc-green text-sm font-medium mt-1 inline-block">
+                  <span className="text-atc-red text-sm font-medium mt-1 inline-block">
                     View Gallery &rarr;
                   </span>
                 </div>

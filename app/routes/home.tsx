@@ -255,17 +255,27 @@ export default function Home() {
             {features.map((feature, i) => (
               <div
                 key={feature.title}
-                className={`reveal reveal-delay-${(i % 3) + 1} bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 group`}
+                className={`reveal reveal-delay-${(i % 3) + 1} flip-card`}
               >
-                <div className="w-16 h-16 rounded-xl bg-linear-to-br from-atc-green/20 to-atc-green/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-atc-green" />
+                <div className="flip-card-inner">
+                  <div className="flip-card-front bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center p-7 text-center">
+                    <div className="w-16 h-16 rounded-xl bg-linear-to-br from-atc-green/20 to-atc-green/5 flex items-center justify-center mb-5">
+                      <feature.icon className="w-8 h-8 text-atc-green" />
+                    </div>
+                    <h3 className="text-lg font-bold text-navy-900">
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <div className="flip-card-back bg-linear-to-br from-atc-green to-atc-blue flex flex-col items-center justify-center p-7 text-center">
+                    <feature.icon className="w-10 h-10 text-white/30 mb-4" />
+                    <h3 className="text-base font-bold text-white mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/85 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-2 group-hover:text-atc-green transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
               </div>
             ))}
           </div>
@@ -281,30 +291,32 @@ export default function Home() {
               subtitle="We value our clients as assets, and we are always looking forward for cordial and long term relationship with them. We are involved in different kinds of business and enjoying with the most cordial business relations established with our suppliers and our clients throughout the world."
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[220px]">
             {machines.map((machine, i) => (
               <div
                 key={machine.name}
-                className={`reveal reveal-delay-${i + 1} group rounded-2xl overflow-hidden border border-gray-200 hover:border-transparent hover:shadow-2xl transition-all duration-300 hover:-translate-y-1`}
+                className={`reveal reveal-delay-${i + 1} masonry-card relative rounded-2xl overflow-hidden cursor-pointer ${
+                  i === 0 || i === 3 ? "row-span-2" : ""
+                }`}
               >
-                <div className="h-48 relative overflow-hidden">
-                  <img
-                    src={machine.image}
-                    alt={machine.name}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                </div>
-                <div className="p-5 bg-white">
-                  <h4 className="font-bold text-navy-900 mb-2 group-hover:text-atc-green transition-colors">
+                <img
+                  src={machine.image}
+                  alt={machine.name}
+                  className="masonry-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 flex flex-col justify-end h-full">
+                  <h4 className="masonry-title text-white font-bold text-lg drop-shadow-lg">
                     {machine.name}
                   </h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {machine.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1 text-atc-green text-sm font-semibold mt-4 group-hover:gap-2 transition-all">
-                    Visit Website <ExternalLink className="w-3.5 h-3.5" />
-                  </span>
+                  <div className="masonry-overlay">
+                    <p className="text-white/90 text-sm leading-relaxed mt-2">
+                      {machine.description}
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 text-atc-green-light text-sm font-semibold mt-3">
+                      Visit Website <ExternalLink className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -332,18 +344,26 @@ export default function Home() {
             {clientNames.map((name, i) => (
               <div
                 key={name}
-                className={`reveal-scale reveal-delay-${(i % 5) + 1} bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-center justify-center h-24 hover:bg-white/10 hover:border-atc-green/40 hover:scale-105 transition-all duration-300 cursor-default`}
+                className={`reveal-scale reveal-delay-${(i % 5) + 1} client-card relative rounded-xl overflow-hidden h-28 cursor-default`}
               >
-                <span className="text-gray-400 text-xs text-center font-medium">
-                  {name}
-                </span>
+                <img
+                  src={`https://picsum.photos/seed/${i + 100}/300/200`}
+                  alt={name}
+                  className="client-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute inset-0 flex items-center justify-center p-2">
+                  <span className="client-name text-white text-xs text-center font-bold drop-shadow-lg bg-black/50 backdrop-blur-sm rounded-lg px-2.5 py-1.5">
+                    {name}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
           <div className="text-center mt-12 reveal">
             <Link
               to="/clients"
-              className="inline-flex items-center gap-2 bg-atc-green hover:bg-atc-green-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-green/25"
+              className="inline-flex items-center gap-2 bg-atc-red hover:bg-atc-red-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-red/25"
             >
               View More <ArrowRight className="w-4 h-4" />
             </Link>
@@ -378,7 +398,7 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-navy-900 group-hover:text-atc-green transition-colors">
                     {person.name}
                   </h3>
-                  <p className="text-atc-green font-semibold text-sm mt-1">
+                  <p className="text-atc-red font-semibold text-sm mt-1">
                     {person.role}
                   </p>
                 </div>
@@ -388,7 +408,7 @@ export default function Home() {
           <div className="text-center mt-12 reveal">
             <Link
               to="/about-us/our-team"
-              className="inline-flex items-center gap-2 bg-atc-green hover:bg-atc-green-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-green/25"
+              className="inline-flex items-center gap-2 bg-atc-red hover:bg-atc-red-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-red/25"
             >
               View More <ArrowRight className="w-4 h-4" />
             </Link>
