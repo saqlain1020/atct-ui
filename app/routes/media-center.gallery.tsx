@@ -42,19 +42,11 @@ export default function Gallery() {
                     alt={g.name}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/40 transition-colors flex items-center justify-center">
-                    <span className="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                      View Gallery
-                    </span>
-                  </div>
                 </div>
                 <div className="p-4">
                   <h3 className="font-bold text-navy-900 group-hover:text-atc-green transition-colors">
                     {g.name}
                   </h3>
-                  <span className="text-atc-red text-sm font-medium mt-1 inline-block">
-                    View Gallery &rarr;
-                  </span>
                 </div>
               </div>
             ))}
