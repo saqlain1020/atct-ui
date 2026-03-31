@@ -13,7 +13,7 @@ const team = [
   {
     name: "Zahid Majeed",
     role: "Chief Executive Officer",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1560250097-0b93528c311a-w600.jpg",
     bio: `Mr. Zahid Majeed joined National Foods Limited in 1987 and pioneered its transformation from a small food enterprise into a leading foods brand in Pakistan. Since then he has served in various capacities at NFL from heading the Corporate Marketing function to most recently establishing the International Business subsidiary, National Foods DMCC. He also introduced the concept of sustainability by establishing a Corporate Social Responsibility (CSR) platform at NFL. Mr. Zahid Majeed played a significant role in initiating a Public-Private Partnership with UNICEF to launch the first Iodized Salt in the mid 1990's under the CSR umbrella along with various other education, health and nutrition initiatives with focused efforts to address women's empowerment.
 
 Mr. Zahid Majeed is also CEO to ATC Technology Consultants and Associated Environment & Energy Solutions.
@@ -23,7 +23,7 @@ Mr. Zahid Majeed studied Philosophy, Politics and Economics at Magdalen College,
   {
     name: "Abrar Hasan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1472099645785-5658abf4ff4e-w600.jpg",
     bio: `Mr. Abrar Hasan has been with National Foods Limited since 1993, where he was later appointed as Chief Executive by the Board of Directors in the year 2000. Under his inspirational leadership and proficient operations management skills, NFL has transformed from a simple recipe producer to a full-fledged foods company. Prior to his joining NFL, Mr. Abrar Hasan was Plant Director at Precision Rubber Products Limited, where he was responsible for overseeing Production and Manufacturing Management.
 
 Mr. Abrar Hasan with his extensive experience and in-depth knowledge has set examples and inspired the NFL team to embrace new technology, discover upcoming marketing trends and invest in human resource development Company wide. He is truly the driving force behind his team of skilled professionals at NFL.
@@ -39,7 +39,7 @@ export default function OurTeam() {
     <>
       <PageBanner
         title="Our Team"
-        image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1522071820081-009f0129c71c-w1920.jpg"
       />
 
       <section className="py-16">

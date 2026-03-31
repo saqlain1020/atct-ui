@@ -13,7 +13,7 @@ export default function Overview() {
     <>
       <PageBanner
         title="Overview"
-        image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1497366216548-37526070297c-w1920.jpg"
       />
 
       <section className="py-16">
@@ -31,7 +31,7 @@ export default function Overview() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=700&q=80"
+                src="/images/photo-1497366811353-6870744d04b2-w700.jpg"
                 alt="ATC Office"
                 className="w-full h-72 object-cover"
               />
@@ -104,7 +104,7 @@ export default function Overview() {
       {/* Full-width image band */}
       <section className="relative h-64 md:h-80 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1920&q=80"
+          src="/images/photo-1551434678-e076c223a692-w1920.jpg"
           alt="Team working"
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -13,7 +13,7 @@ export default function ContactUs() {
     <>
       <PageBanner
         title="Contact Us"
-        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1486406146926-c627a92ad1ab-w1920.jpg"
       />
 
       <section className="py-16">
@@ -117,7 +117,7 @@ export default function ContactUs() {
 
               <div className="mt-8 h-48 rounded-xl overflow-hidden relative">
                 <img
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"
+                  src="/images/photo-1524661135-423995f22d0b-w800.jpg"
                   alt="Map location"
                   className="absolute inset-0 w-full h-full object-cover"
                 />

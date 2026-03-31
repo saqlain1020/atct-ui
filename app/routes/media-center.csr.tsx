@@ -14,13 +14,13 @@ export default function CSR() {
       <PageBanner
         title="Corporate Social Responsibility"
         subtitle="We have always cared deeply about the Textiles community..."
-        image="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1509099836639-18ba1795216d-w1920.jpg"
       />
 
       {/* Top image band */}
       <section className="relative h-48 md:h-64 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80"
+          src="/images/photo-1524178232363-1fb2b075b655-w1920.jpg"
           alt="Education and community"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -105,7 +105,7 @@ export default function CSR() {
             <div className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200">
               <div className="h-48 relative">
                 <img
-                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80"
+                  src="/images/photo-1523050854058-8df90110c9f1-w900.jpg"
                   alt="University campus"
                   className="absolute inset-0 w-full h-full object-cover"
                 />

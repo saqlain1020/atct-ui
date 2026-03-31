@@ -45,11 +45,11 @@ const services = [
 const serviceCenters = [
   {
     city: "Lahore",
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1587293852726-70cdb56c2866-w600.jpg",
   },
   {
     city: "Karachi",
-    image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1567157577867-05ccb1388e66-w600.jpg",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Technical() {
       <PageBanner
         title="Technical"
         subtitle="Technical Support to the Principals Fully Equipped & Trained Service Centers in Lahore & Karachi."
-        image="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1581092160562-40aa08e78837-w1920.jpg"
       />
 
       <section className="py-16">

@@ -32,7 +32,7 @@ export default function GlobalNetwork() {
     <>
       <PageBanner
         title="Global Network"
-        image="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1526778548025-fa2f459cd5c1-w1920.jpg"
       />
 
       <section className="py-16">
@@ -64,7 +64,7 @@ export default function GlobalNetwork() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-72 rounded-2xl overflow-hidden relative">
             <img
-              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1920&q=80"
+              src="/images/photo-1524661135-423995f22d0b-w1920.jpg"
               alt="World map"
               className="absolute inset-0 w-full h-full object-cover"
             />

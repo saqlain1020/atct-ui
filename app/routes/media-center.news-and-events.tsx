@@ -12,25 +12,25 @@ const newsItems = [
     title: "Neuenhauser Automation for Spinning Mills",
     description: "Neuenhauser automation solutions are transforming spinning mills with cutting-edge technology for improved efficiency and reduced labor costs.",
     date: "2019",
-    image: "https://images.unsplash.com/photo-1565043589149-26ae5c0d59e3?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1565043589149-26ae5c0d59e3-w600.jpg",
   },
   {
     title: "Neuenhauser Automation at Ibrahim Fibre",
     description: "Successful deployment of Neuenhauser automation systems at Ibrahim Fibre, one of Pakistan's leading textile manufacturers.",
     date: "2019",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1504917595217-d4dc5ebe6122-w600.jpg",
   },
   {
     title: "ATC actively participates at ITMA International 2019",
     description: "ATC Technology Consultants represented Pakistan at the prestigious ITMA International textile machinery exhibition, showcasing our global partnerships.",
     date: "2019",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1540575467063-178a50c2df87-w600.jpg",
   },
   {
     title: "Agent of the Year for 2018",
     description: "We are pleased to inform our customers and principals that we have been honoured by RIETER as AGENT OF THE YEAR FOR 2018. We look forward to continue to serve you to the best of our abilities.",
     date: "2018",
-    image: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=600&q=80",
+    image: "/images/photo-1551818255-e6e10975bc17-w600.jpg",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function NewsAndEvents() {
     <>
       <PageBanner
         title="News and Events"
-        image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1540575467063-178a50c2df87-w1920.jpg"
       />
 
       <section className="py-16">

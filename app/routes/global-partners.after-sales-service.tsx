@@ -30,7 +30,7 @@ export default function AfterSalesService() {
       <PageBanner
         title="After Sales Service"
         subtitle="Efficiency and Results"
-        image="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1521791136064-7986c2920216-w1920.jpg"
       />
 
       <section className="py-16">
@@ -51,7 +51,7 @@ export default function AfterSalesService() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=700&q=80"
+                src="/images/photo-1581092918056-0c4c3acd3789-w700.jpg"
                 alt="Engineering support"
                 className="w-full h-64 object-cover"
               />

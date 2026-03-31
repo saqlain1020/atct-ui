@@ -200,26 +200,6 @@ body {
   transform: translateY(-8px);
 }
 
-/* ─── Client card image hover ─── */
-.client-card .client-name {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.client-card:hover .client-name {
-  opacity: 1;
-  transform: translateY(0);
-}
-.client-card:hover .client-img {
-  filter: brightness(0.45);
-}
-.client-card .client-img {
-  transition: filter 0.35s ease, transform 0.5s ease;
-}
-.client-card:hover .client-img {
-  transform: scale(1.05);
-}
-
 .navbar-transparent {
   background: transparent;
   transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;

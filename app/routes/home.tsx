@@ -116,19 +116,19 @@ const machines = [
   },
 ];
 
-const clientNames = [
-  "Gul Ahmed Textile",
-  "Nishat Mills",
-  "Interloop",
-  "Ibrahim Fibres",
-  "Sapphire Group",
-  "Artistic Milliners",
-  "Feroze1888 Mills",
-  "Al Karam Group",
-  "Masood Textiles",
-  "Soorty Group",
-  "Yunus Brothers",
-  "Gadoon Textile",
+const clientNames: { name: string; logo: string }[] = [
+  { name: "Gul Ahmed Textile", logo: "gul-ahmed-textile.png" },
+  { name: "Nishat Mills", logo: "nishat-mills.png" },
+  { name: "Interloop", logo: "interloop.png" },
+  { name: "Ibrahim Fibres", logo: "ibrahim-fibres.png" },
+  { name: "Sapphire Group", logo: "sapphire-group.png" },
+  { name: "Artistic Milliners", logo: "artistic-milliners.png" },
+  { name: "Feroze1888 Mills Ltd", logo: "feroze1888-mills-ltd.png" },
+  { name: "Al Karam Group", logo: "al-karam-group.png" },
+  { name: "Masood Textiles", logo: "masood-textiles.png" },
+  { name: "Soorty Group", logo: "soorty-group.png" },
+  { name: "Yunus Brothers Group", logo: "yunus-brothers-group.png" },
+  { name: "Gadoon Textile Mills", logo: "gadoon-textile-mills.png" },
 ];
 
 const teamMembers = [
@@ -136,13 +136,13 @@ const teamMembers = [
     name: "Zahid Majeed",
     role: "Chief Executive Officer",
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+      "/images/photo-1560250097-0b93528c311a-w600.jpg",
   },
   {
     name: "Abrar Hasan",
     role: "Director",
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
+      "/images/photo-1472099645785-5658abf4ff4e-w600.jpg",
   },
 ];
 
@@ -322,7 +322,7 @@ export default function Home() {
       {/* ═══════ OUR CLIENTS ═══════ */}
       <section className="py-20 md:py-28 relative overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1920&q=80"
+          src="/images/photo-1441986300917-64674bd600d8-w1920.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -336,20 +336,21 @@ export default function Home() {
             />
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {clientNames.map((name, i) => (
+            {clientNames.map((client, i) => (
               <div
-                key={name}
-                className={`reveal-scale reveal-delay-${(i % 5) + 1} client-card relative rounded-xl overflow-hidden h-28 cursor-default`}
+                key={client.name}
+                className={`reveal-scale reveal-delay-${(i % 5) + 1} group relative bg-white rounded-xl overflow-hidden h-28 cursor-default hover:shadow-lg hover:shadow-atc-green/20 hover:-translate-y-1 transition-all duration-300`}
               >
-                <img
-                  src={`https://picsum.photos/seed/${i + 100}/300/200`}
-                  alt={name}
-                  className="client-img absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="absolute inset-0 flex items-center justify-center p-2">
-                  <span className="client-name text-white text-xs text-center font-bold drop-shadow-lg bg-black/50 backdrop-blur-sm rounded-lg px-2.5 py-1.5">
-                    {name}
+                <div className="absolute inset-0 flex items-center justify-center p-4 transition-all duration-400 group-hover:opacity-0 group-hover:scale-90">
+                  <img
+                    src={`/clients/${client.logo}`}
+                    alt={client.name}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex items-center justify-center p-3 opacity-0 transition-all duration-400 group-hover:opacity-100">
+                  <span className="text-white text-xs text-center font-bold">
+                    {client.name}
                   </span>
                 </div>
               </div>

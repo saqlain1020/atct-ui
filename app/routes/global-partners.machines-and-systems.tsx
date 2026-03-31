@@ -102,7 +102,7 @@ export default function MachinesAndSystems() {
       <PageBanner
         title="Machines and Systems"
         subtitle="Innovative and Sustainable"
-        image="https://images.unsplash.com/photo-1565043589149-26ae5c0d59e3?auto=format&fit=crop&w=1920&q=80"
+        image="/images/photo-1565043589149-26ae5c0d59e3-w1920.jpg"
       />
 
       <section className="py-16">
