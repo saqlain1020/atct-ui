@@ -14,6 +14,9 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import Img1 from "public/banner/1.jpg";
+import Img2 from "public/banner/2.jpg";
+import Img3 from "public/banner/3.jpg";
 
 export function meta() {
   return [
@@ -29,21 +32,21 @@ export function meta() {
 const heroSlides = [
   {
     image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80",
+      Img1,
     label: "WHO WE ARE",
     heading: "WELCOME TO ATC",
     text: "We value our clients as assets and are always looking forward to developing cordial and long term relationships with them. We are involved in different kinds of businesses.",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80",
+      Img2,
     label: "WHAT WE DO",
     heading: "TEXTILE TECHNOLOGY EXPERTS",
     text: "With over 50 years of experience, ATC is the leading B2B supplier of textile systems, technological components and services to the Pakistani Textile Industry.",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=80",
+      Img3,
     label: "OUR COMMITMENT",
     heading: "50 YEARS OF EXCELLENCE",
     text: "From BMR solutions and new machinery to plant automation and green technologies, we deliver innovative solutions that drive your business forward.",
@@ -191,9 +194,9 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div
               key={slideKey}
-              className="hero-content-animate max-w-xl bg-navy-900/70 backdrop-blur-sm p-8 md:p-10 border-l-4 border-atc-red"
+              className="hero-content-animate max-w-xl bg-navy-900/70 backdrop-blur-sm p-8 md:p-10 border-l-4 border-atc-blue"
             >
-              <span className="inline-block bg-atc-red text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5">
+              <span className="inline-block bg-atc-blue text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5">
                 {heroSlides[currentSlide].label}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mt-4 tracking-tight">

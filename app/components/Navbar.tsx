@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "public/logo.jpg";
 
 const navItems = [
   {
@@ -65,18 +66,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
           <Link to="/" className="flex items-center shrink-0 group">
-            <div className="relative">
-              <div className="w-[52px] h-[52px] bg-atc-blue border-2 border-white/30 flex items-center justify-center group-hover:border-white/60 transition-colors">
-                <span className="text-white font-black text-xl tracking-tight">
-                  ATC
-                </span>
-              </div>
-              <div className="absolute -bottom-[6px] left-0 right-0 text-center">
-                <span className="text-[5px] text-white/60 uppercase tracking-[0.15em] leading-none">
-                  Technology Consultants
-                </span>
-              </div>
-            </div>
+            <img src={logo} alt="ATC Logo" className="w-[52px] h-[52px]" />
+
           </Link>
 
           {/* Desktop nav */}
@@ -85,11 +76,10 @@ export function Navbar() {
               item.children ? (
                 <div key={item.label} className="relative group">
                   <button
-                    className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-all duration-200 ${
-                      isParentActive(item.children)
-                        ? "text-atc-green"
-                        : "text-white/90 hover:text-white"
-                    }`}
+                    className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-all duration-200 ${isParentActive(item.children)
+                      ? "text-atc-green"
+                      : "text-white/90 hover:text-white"
+                      }`}
                   >
                     {item.label}
                     <ChevronDown className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-all group-hover:translate-y-0.5" />
@@ -100,11 +90,10 @@ export function Navbar() {
                         <Link
                           key={child.to}
                           to={child.to}
-                          className={`block px-5 py-3 text-sm transition-all duration-150 border-l-3 ${
-                            isActive(child.to)
-                              ? "text-atc-green bg-green-50/60 font-semibold border-atc-green"
-                              : "text-gray-700 hover:bg-gray-50 hover:text-navy-900 hover:pl-6 border-transparent"
-                          }`}
+                          className={`block px-5 py-3 text-sm transition-all duration-150 border-l-3 ${isActive(child.to)
+                            ? "text-atc-green bg-green-50/60 font-semibold border-atc-green"
+                            : "text-gray-700 hover:bg-gray-50 hover:text-navy-900 hover:pl-6 border-transparent"
+                            }`}
                         >
                           {child.label}
                         </Link>
@@ -116,11 +105,10 @@ export function Navbar() {
                 <Link
                   key={item.label}
                   to={item.to!}
-                  className={`px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-all duration-200 relative ${
-                    isActive(item.to!)
+                    className={`px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-all duration-200 relative ${isActive(item.to!)
                       ? "text-atc-green"
                       : "text-white/90 hover:text-white"
-                  }`}
+                      }`}
                 >
                   {item.label}
                   {isActive(item.to!) && (
@@ -144,9 +132,8 @@ export function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <div className="bg-navy-900/98 backdrop-blur-md border-t border-white/10 px-4 py-4 space-y-1">
           {navItems.map((item) =>
@@ -160,26 +147,23 @@ export function Navbar() {
                 >
                   {item.label}
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      openDropdown === item.label ? "rotate-180" : ""
-                    }`}
+                    className={`w-4 h-4 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-200 ${
-                    openDropdown === item.label ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-200 ${openDropdown === item.label ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+                    }`}
                 >
                   <div className="ml-4 border-l-2 border-atc-green/30 pl-4 py-1 space-y-0.5">
                     {item.children.map((child) => (
                       <Link
                         key={child.to}
                         to={child.to}
-                        className={`block px-3 py-2.5 text-sm rounded-lg transition-all ${
-                          isActive(child.to)
-                            ? "text-atc-green font-semibold bg-atc-green/5"
-                            : "text-gray-300 hover:text-white hover:bg-white/5"
-                        }`}
+                        className={`block px-3 py-2.5 text-sm rounded-lg transition-all ${isActive(child.to)
+                          ? "text-atc-green font-semibold bg-atc-green/5"
+                          : "text-gray-300 hover:text-white hover:bg-white/5"
+                          }`}
                       >
                         {child.label}
                       </Link>
@@ -191,11 +175,10 @@ export function Navbar() {
               <Link
                 key={item.label}
                 to={item.to!}
-                className={`block px-3 py-3 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${
-                  isActive(item.to!)
+                  className={`block px-3 py-3 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${isActive(item.to!)
                     ? "text-atc-green bg-atc-green/5"
                     : "text-white/90 hover:text-white hover:bg-white/5"
-                }`}
+                    }`}
               >
                 {item.label}
               </Link>
