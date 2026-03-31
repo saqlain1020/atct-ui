@@ -17,6 +17,10 @@ import {
 import Img1 from "public/banner/1.jpg";
 import Img2 from "public/banner/2.jpg";
 import Img3 from "public/banner/3.jpg";
+import BoninoLogo from "public/partners/bonino.png";
+import MargasaLogo from "public/partners/margasa.jpg";
+import SaurerJintanLogo from "public/partners/saurer-jintan.jpg";
+import NeuenhauserLogo from "public/partners/neuenhauser.png";
 
 export function meta() {
   return [
@@ -92,29 +96,23 @@ const features = [
 const machines = [
   {
     name: "Bonino Carding Machines",
-    description:
-      "Cotton cards, Non-woven cards, woolen cards, Fiber preparation machines, rotary cutter and tearing machines",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    description: "Cotton cards, Non-woven cards, woolen cards, Fiber preparation machines",
+    logo: BoninoLogo,
   },
   {
     name: "Margasa",
-    description: "Soft & hard waste recycling lines, non-woven lines",
-    image:
-      "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=600&q=80",
+    description: "Hard & Soft Waste Recycling Line",
+    logo: MargasaLogo,
   },
   {
     name: "Saurer Jintan",
     description: "Blowroom and carding machines",
-    image:
-      "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=600&q=80",
+    logo: SaurerJintanLogo,
   },
   {
     name: "Neuenhauser",
-    description:
-      "Automation for Spinning Mills and MMF Production, Batch winder – Center winder, Coating & Drying Systems",
-    image:
-      "https://images.unsplash.com/photo-1565043589149-26ae5c0d59e3?auto=format&fit=crop&w=600&q=80",
+    description: "Palletising & Cone Transport Systems",
+    logo: NeuenhauserLogo,
   },
 ];
 
@@ -291,32 +289,29 @@ export default function Home() {
               subtitle="We value our clients as assets, and we are always looking forward for cordial and long term relationship with them. We are involved in different kinds of business and enjoying with the most cordial business relations established with our suppliers and our clients throughout the world."
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[220px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {machines.map((machine, i) => (
               <div
                 key={machine.name}
-                className={`reveal reveal-delay-${i + 1} masonry-card relative rounded-2xl overflow-hidden cursor-pointer ${
-                  i === 0 || i === 3 ? "row-span-2" : ""
-                }`}
+                className={`reveal reveal-delay-${i + 1} partner-card group relative rounded-2xl overflow-hidden cursor-pointer border border-gray-200 bg-white h-48`}
               >
-                <img
-                  src={machine.image}
-                  alt={machine.name}
-                  className="masonry-img absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 flex flex-col justify-end h-full">
-                  <h4 className="masonry-title text-white font-bold text-lg drop-shadow-lg">
+                <div className="absolute inset-0 flex items-center justify-center p-8 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
+                  <img
+                    src={machine.logo}
+                    alt={machine.name}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex flex-col items-center justify-center p-5 text-center opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                  <h4 className="text-white font-bold text-lg mb-2">
                     {machine.name}
                   </h4>
-                  <div className="masonry-overlay">
-                    <p className="text-white/90 text-sm leading-relaxed mt-2">
-                      {machine.description}
-                    </p>
-                    <span className="inline-flex items-center gap-1.5 text-atc-green-light text-sm font-semibold mt-3">
-                      Visit Website <ExternalLink className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
+                  <p className="text-white/80 text-sm leading-relaxed mb-3">
+                    {machine.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-atc-green-light text-sm font-semibold">
+                    Visit Website <ExternalLink className="w-3.5 h-3.5" />
+                  </span>
                 </div>
               </div>
             ))}
