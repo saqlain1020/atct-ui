@@ -3,13 +3,157 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-navy-50: #e8edf3;
+  --color-navy-100: #c5d0e0;
+  --color-navy-200: #9fb1cb;
+  --color-navy-300: #7892b5;
+  --color-navy-400: #5a7aa5;
+  --color-navy-500: #3c6395;
+  --color-navy-600: #355a88;
+  --color-navy-700: #2c4e76;
+  --color-navy-800: #1a2a3a;
+  --color-navy-900: #0d1b2a;
+
+  --color-atc-green: #8DC63F;
+  --color-atc-green-dark: #6fa830;
+  --color-atc-green-light: #a8d968;
+  --color-atc-red: #c0392b;
+  --color-atc-blue: #1a3a5c;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white text-gray-800;
+  scroll-behavior: smooth;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+.page-banner {
+  background: linear-gradient(135deg, var(--color-navy-900), var(--color-navy-700));
+}
+
+/* ─── Hero slideshow ─── */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  will-change: opacity, transform;
+}
+.hero-slide.active {
+  opacity: 1;
+}
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+/* Ken Burns slow zoom */
+@keyframes kenburns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
+.hero-slide.active {
+  animation: kenburns 8s ease-out forwards;
+}
+
+/* ─── Scroll-reveal animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Hero content entrance ─── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content-animate > * {
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-content-animate > *:nth-child(1) { animation-delay: 0.3s; }
+.hero-content-animate > *:nth-child(2) { animation-delay: 0.5s; }
+.hero-content-animate > *:nth-child(3) { animation-delay: 0.7s; }
+.hero-content-animate > *:nth-child(4) { animation-delay: 0.9s; }
+
+/* ─── Slideshow dots ─── */
+.slide-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.slide-dot.active {
+  background: white;
+  border-color: white;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Navbar transition ─── */
+.navbar-transparent {
+  background: transparent;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+}
+.navbar-solid {
+  background: var(--color-navy-900);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
