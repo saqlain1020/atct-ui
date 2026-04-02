@@ -192,9 +192,9 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div
               key={slideKey}
-              className="hero-content-animate max-w-xl bg-navy-900/70 backdrop-blur-sm p-8 md:p-10 border-l-4 border-atc-blue"
+              className="hero-content-animate max-w-xl bg-[#111111]/80 backdrop-blur-sm p-8 md:p-10 border-l-4 border-[#FFC107]"
             >
-              <span className="inline-block bg-atc-blue text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5">
+              <span className="inline-block bg-[#FFC107] text-[#111111] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-sm">
                 {heroSlides[currentSlide].label}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mt-4 tracking-tight">
@@ -204,8 +204,8 @@ export default function Home() {
                 {heroSlides[currentSlide].text}
               </p>
               <Link
-                to="/about-us/overview"
-                className="inline-block mt-6 border-2 border-white/70 hover:bg-white hover:text-navy-900 text-white text-sm font-bold uppercase tracking-wider px-8 py-3 transition-all duration-300"
+                to="/about"
+                className="inline-block mt-6 border-2 border-[#FFC107] hover:bg-[#FFC107] hover:text-[#111111] text-[#FFC107] text-sm font-bold uppercase tracking-wider px-8 py-3 transition-all duration-300 rounded-sm"
               >
                 Read More
               </Link>
@@ -256,16 +256,16 @@ export default function Home() {
                 className={`reveal reveal-delay-${(i % 3) + 1} flip-card`}
               >
                 <div className="flip-card-inner">
-                  <div className="flip-card-front bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center p-7 text-center">
-                    <div className="w-16 h-16 rounded-xl bg-linear-to-br from-atc-green/20 to-atc-green/5 flex items-center justify-center mb-5">
-                      <feature.icon className="w-8 h-8 text-atc-green" />
+                  <div className="flip-card-front bg-white shadow-sm border-2 border-transparent hover:border-[#FFC107] flex flex-col items-center justify-center p-7 text-center rounded-xl">
+                    <div className="w-16 h-16 rounded-xl bg-[#FFC107]/20 flex items-center justify-center mb-5 border border-[#FFC107]/30">
+                      <feature.icon className="w-8 h-8 text-[#FFC107]" />
                     </div>
-                    <h3 className="text-lg font-bold text-navy-900">
+                    <h3 className="text-lg font-bold text-[#111111]">
                       {feature.title}
                     </h3>
                   </div>
-                  <div className="flip-card-back bg-linear-to-br from-atc-green to-atc-blue flex flex-col items-center justify-center p-7 text-center">
-                    <feature.icon className="w-10 h-10 text-white/30 mb-4" />
+                  <div className="flip-card-back bg-[#111111] flex flex-col items-center justify-center p-7 text-center rounded-xl border-b-4 border-[#FFC107]">
+                    <feature.icon className="w-10 h-10 text-[#FFC107] mb-4" />
                     <h3 className="text-base font-bold text-white mb-3">
                       {feature.title}
                     </h3>
@@ -293,7 +293,7 @@ export default function Home() {
             {machines.map((machine, i) => (
               <div
                 key={machine.name}
-                className={`reveal reveal-delay-${i + 1} partner-card group relative rounded-2xl overflow-hidden cursor-pointer border border-gray-200 bg-white h-48`}
+                className={`reveal reveal-delay-${i + 1} partner-card group relative rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-[#FFC107] bg-white h-48 shadow-sm`}
               >
                 <div className="absolute inset-0 flex items-center justify-center p-8 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
                   <img
@@ -302,14 +302,14 @@ export default function Home() {
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex flex-col items-center justify-center p-5 text-center opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                <div className="absolute inset-0 bg-[#111111]/90 flex flex-col items-center justify-center p-5 text-center opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 border-b-4 border-[#FFC107]">
                   <h4 className="text-white font-bold text-lg mb-2">
                     {machine.name}
                   </h4>
-                  <p className="text-white/80 text-sm leading-relaxed mb-3">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3">
                     {machine.description}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 text-atc-green-light text-sm font-semibold">
+                  <span className="inline-flex items-center gap-1.5 text-[#FFC107] text-sm font-semibold">
                     Visit Website <ExternalLink className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -326,7 +326,7 @@ export default function Home() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-navy-900/90" />
+        <div className="absolute inset-0 bg-[#111111]/80 border-t-4 border-[#FFC107]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="reveal">
             <SectionHeading
@@ -339,7 +339,7 @@ export default function Home() {
             {clientNames.map((client, i) => (
               <div
                 key={client.name}
-                className={`reveal-scale reveal-delay-${(i % 5) + 1} group relative bg-white rounded-xl overflow-hidden h-28 cursor-default hover:shadow-lg hover:shadow-atc-green/20 hover:-translate-y-1 transition-all duration-300`}
+                className={`reveal-scale reveal-delay-${(i % 5) + 1} group relative bg-white rounded-xl overflow-hidden h-28 cursor-default border-2 border-transparent hover:border-[#FFC107] hover:shadow-lg transition-all duration-300`}
               >
                 <div className="absolute inset-0 flex items-center justify-center p-4 transition-all duration-400 group-hover:opacity-0 group-hover:scale-90">
                   <img
@@ -348,7 +348,7 @@ export default function Home() {
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex items-center justify-center p-3 opacity-0 transition-all duration-400 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-[#111111]/90 flex items-center justify-center p-3 opacity-0 transition-all duration-400 group-hover:opacity-100 border-b-4 border-[#FFC107]">
                   <span className="text-white text-xs text-center font-bold">
                     {client.name}
                   </span>
@@ -359,7 +359,7 @@ export default function Home() {
           <div className="text-center mt-12 reveal">
             <Link
               to="/clients"
-              className="inline-flex items-center gap-2 bg-atc-red hover:bg-atc-red-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-red/25"
+              className="inline-flex items-center gap-2 bg-[#FFC107] hover:bg-[#e0a800] text-[#111111] font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-sm transition-all duration-300"
             >
               View More <ArrowRight className="w-4 h-4" />
             </Link>
@@ -380,21 +380,21 @@ export default function Home() {
             {teamMembers.map((person, i) => (
               <div
                 key={person.name}
-                className={`${i === 0 ? "reveal-left" : "reveal-right"} bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group hover:-translate-y-1`}
+                className={`${i === 0 ? "reveal-left" : "reveal-right"} bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#FFC107] text-center group`}
               >
-                <div className="h-64 relative overflow-hidden">
+                <div className="h-64 relative overflow-hidden border-b-4 border-[#111111] group-hover:border-[#FFC107] transition-colors">
                   <img
                     src={person.image}
                     alt={person.name}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-atc-green/0 group-hover:bg-atc-green/10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-[#111111]/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 <div className="p-7">
-                  <h3 className="text-xl font-bold text-navy-900 group-hover:text-atc-green transition-colors">
+                  <h3 className="text-xl font-bold text-[#111111] group-hover:text-[#FFC107] transition-colors">
                     {person.name}
                   </h3>
-                  <p className="text-atc-red font-semibold text-sm mt-1">
+                  <p className="text-gray-600 font-semibold text-sm mt-1">
                     {person.role}
                   </p>
                 </div>
@@ -403,8 +403,8 @@ export default function Home() {
           </div>
           <div className="text-center mt-12 reveal">
             <Link
-              to="/about-us/our-team"
-              className="inline-flex items-center gap-2 bg-atc-red hover:bg-atc-red-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-red/25"
+              to="/about"
+              className="inline-flex items-center gap-2 bg-[#FFC107] hover:bg-[#e0a800] text-[#111111] font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-sm transition-all duration-300"
             >
               View More <ArrowRight className="w-4 h-4" />
             </Link>

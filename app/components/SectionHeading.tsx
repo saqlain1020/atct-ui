@@ -9,13 +9,13 @@ export function SectionHeading({ overline, title, subtitle, light }: SectionHead
   return (
     <div className="text-center mb-12">
       {overline && (
-        <p className="text-atc-green font-semibold text-sm uppercase tracking-wider mb-2">
+        <p className="text-[#FFC107] font-semibold text-sm uppercase tracking-wider mb-2">
           {overline}
         </p>
       )}
       <h2
         className={`text-3xl md:text-4xl font-bold ${
-          light ? "text-white" : "text-navy-900"
+          light ? "text-white" : "text-[#111111]"
         }`}
       >
         {title}
@@ -29,7 +29,7 @@ export function SectionHeading({ overline, title, subtitle, light }: SectionHead
           {subtitle}
         </p>
       )}
-      <div className="mt-4 w-16 h-1 bg-atc-red mx-auto rounded-full" />
+      <div className="mt-4 w-16 h-1 bg-[#FFC107] mx-auto rounded-full" />
     </div>
   );
 }

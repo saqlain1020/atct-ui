@@ -111,9 +111,9 @@ export default function Clients() {
           <div className="flex justify-center gap-2 mb-12">
             <button
               onClick={() => setTab("north")}
-              className={`px-6 py-3 rounded-lg font-semibold text-sm transition-colors ${
+              className={`px-6 py-3 rounded-sm font-bold text-sm uppercase tracking-wider transition-colors ${
                 tab === "north"
-                  ? "bg-atc-red text-white"
+                  ? "bg-[#FFC107] text-[#111111]"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -121,9 +121,9 @@ export default function Clients() {
             </button>
             <button
               onClick={() => setTab("south")}
-              className={`px-6 py-3 rounded-lg font-semibold text-sm transition-colors ${
+              className={`px-6 py-3 rounded-sm font-bold text-sm uppercase tracking-wider transition-colors ${
                 tab === "south"
-                  ? "bg-atc-red text-white"
+                  ? "bg-[#FFC107] text-[#111111]"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -135,7 +135,7 @@ export default function Clients() {
             {clients.map((name) => (
               <div
                 key={name}
-                className="group relative bg-white border border-gray-200 rounded-xl overflow-hidden h-32 cursor-default hover:border-atc-green/50 hover:shadow-lg transition-all duration-300"
+                className="group relative bg-white border-2 border-gray-200 rounded-xl overflow-hidden h-32 cursor-default hover:border-[#FFC107] hover:shadow-lg transition-all duration-300"
               >
                 <div className="absolute inset-0 flex items-center justify-center p-5 transition-all duration-400 group-hover:opacity-0 group-hover:scale-90">
                   <img
@@ -144,7 +144,7 @@ export default function Clients() {
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex items-center justify-center p-4 opacity-0 transition-all duration-400 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-[#111111]/90 flex items-center justify-center p-4 opacity-0 transition-all duration-400 group-hover:opacity-100 border-b-4 border-[#FFC107]">
                   <span className="text-white text-sm font-bold text-center">
                     {name}
                   </span>

@@ -14,7 +14,7 @@ export function PageBanner({ title, subtitle, image }: PageBannerProps) {
             alt=""
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-navy-900/75" />
+          <div className="absolute inset-0 bg-[#111111]/75" />
         </>
       ) : (
         <div className="absolute inset-0 page-banner" />

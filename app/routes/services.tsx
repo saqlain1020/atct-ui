@@ -4,7 +4,7 @@ import { Wrench, Settings, GraduationCap, ClipboardCheck, Cog, HeadsetIcon } fro
 
 export function meta() {
   return [
-    { title: "Technical - ATC Technology Consultants" },
+    { title: "Services - ATC Technology Consultants" },
     { name: "description", content: "Technical support to the principals with fully equipped and trained service centers." },
   ];
 }
@@ -53,11 +53,11 @@ const serviceCenters = [
   },
 ];
 
-export default function Technical() {
+export default function Services() {
   return (
     <>
       <PageBanner
-        title="Technical"
+        title="Technical Services"
         subtitle="Technical Support to the Principals Fully Equipped & Trained Service Centers in Lahore & Karachi."
         image="/images/photo-1581092160562-40aa08e78837-w1920.jpg"
       />
@@ -68,16 +68,16 @@ export default function Technical() {
             title="Our Technical Services"
             subtitle="We provide a comprehensive range of technical services to support our clients and global partners."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {services.map((service) => (
               <div
                 key={service.title}
-                className="bg-white rounded-xl p-6 border border-gray-200 hover:border-atc-green/50 hover:shadow-lg transition-all group"
+                className="bg-white rounded-xl p-8 border-2 border-transparent hover:border-[#FFC107] hover:shadow-lg transition-all group shadow-sm"
               >
-                <div className="w-14 h-14 rounded-lg bg-atc-green/10 flex items-center justify-center mb-4 group-hover:bg-atc-green/20 transition-colors">
-                  <service.icon className="w-7 h-7 text-atc-green" />
+                <div className="w-16 h-16 rounded-lg bg-[#FFC107]/20 flex items-center justify-center mb-6 group-hover:bg-[#FFC107] transition-colors border border-[#FFC107]/30">
+                  <service.icon className="w-8 h-8 text-[#FFC107] group-hover:text-[#111111] transition-colors" />
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-2">{service.title}</h3>
+                <h3 className="text-xl font-bold text-[#111111] mb-3">{service.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
@@ -85,23 +85,23 @@ export default function Technical() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading title="Service Centers" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {serviceCenters.map((sc) => (
-              <div key={sc.city} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="h-48 relative overflow-hidden">
+              <div key={sc.city} className="bg-white rounded-xl border-2 border-transparent hover:border-[#111111] overflow-hidden shadow-sm transition-all group">
+                <div className="h-56 relative overflow-hidden border-b-4 border-[#FFC107]">
                   <img
                     src={sc.image}
                     alt={`${sc.city} cityscape`}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-navy-900/40" />
+                  <div className="absolute inset-0 bg-[#111111]/40 group-hover:bg-[#111111]/20 transition-colors" />
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-navy-900">{sc.city} Service Center</h3>
-                  <p className="text-gray-600 text-sm mt-2">
+                <div className="p-8 text-center">
+                  <h3 className="text-2xl font-bold text-[#111111]">{sc.city} Service Center</h3>
+                  <p className="text-gray-600 mt-3">
                     Fully equipped and trained engineers available for on-site and in-house support.
                   </p>
                 </div>
