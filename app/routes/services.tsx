@@ -1,11 +1,11 @@
 import { PageBanner } from "~/components/PageBanner";
 import { SectionHeading } from "~/components/SectionHeading";
-import { Wrench, Settings, GraduationCap, ClipboardCheck, Cog, HeadsetIcon } from "lucide-react";
+import { Wrench, Settings, GraduationCap, ClipboardCheck, Cog, HeadsetIcon, Database, Users } from "lucide-react";
 
 export function meta() {
   return [
-    { title: "Technical - ATC Technology Consultants" },
-    { name: "description", content: "Technical support to the principals with fully equipped and trained service centers." },
+    { title: "Technical Services - ATC Technology Consultants" },
+    { name: "description", content: "After-sales-service through fully equipped Service Centers in Lahore and Karachi with high caliber technicians and integrated ERP/CRM solutions." },
   ];
 }
 
@@ -40,6 +40,16 @@ const services = [
     title: "Remote Support",
     description: "24/7 remote technical support and troubleshooting assistance for urgent issues and operational queries.",
   },
+  {
+    icon: Database,
+    title: "Integrated ERP/CRM Solutions",
+    description: "Integrated ERP and CRM systems to better manage customer needs, streamline service delivery, and ensure total customer satisfaction.",
+  },
+  {
+    icon: Users,
+    title: "High Caliber Technicians",
+    description: "Service Centers deployed with high caliber technicians providing after-sales-service throughout Pakistan from our Lahore and Karachi facilities.",
+  },
 ];
 
 const serviceCenters = [
@@ -57,8 +67,8 @@ export default function Technical() {
   return (
     <>
       <PageBanner
-        title="Technical"
-        subtitle="Technical Support to the Principals Fully Equipped & Trained Service Centers in Lahore & Karachi."
+        title="Technical Services"
+        subtitle="After-sales-service through fully equipped Service Centers in Lahore & Karachi, deployed with high caliber technicians and integrated ERP/CRM solutions."
         image="/images/photo-1581092160562-40aa08e78837-w1920.jpg"
       />
 
@@ -72,12 +82,12 @@ export default function Technical() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="bg-white rounded-xl p-6 border border-gray-200 hover:border-atc-green/50 hover:shadow-lg transition-all group"
+                className="bg-white rounded-xl p-6 border border-slate-200 hover:border-gold-300 hover:shadow-lg transition-all group"
               >
-                <div className="w-14 h-14 rounded-lg bg-atc-green/10 flex items-center justify-center mb-4 group-hover:bg-atc-green/20 transition-colors">
-                  <service.icon className="w-7 h-7 text-atc-green" />
+                <div className="w-14 h-14 rounded-lg bg-gold-50 flex items-center justify-center mb-4 group-hover:bg-gold-100 transition-colors border border-gold-200">
+                  <service.icon className="w-7 h-7 text-gold-600" />
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-2">{service.title}</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{service.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
@@ -90,19 +100,19 @@ export default function Technical() {
           <SectionHeading title="Service Centers" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {serviceCenters.map((sc) => (
-              <div key={sc.city} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <div key={sc.city} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                 <div className="h-48 relative overflow-hidden">
                   <img
                     src={sc.image}
                     alt={`${sc.city} cityscape`}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-navy-900/40" />
+                  <div className="absolute inset-0 bg-slate-900/40" />
                 </div>
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-navy-900">{sc.city} Service Center</h3>
+                  <h3 className="text-xl font-bold text-slate-900">{sc.city} Service Center</h3>
                   <p className="text-gray-600 text-sm mt-2">
-                    Fully equipped and trained engineers available for on-site and in-house support.
+                    Fully equipped with high caliber technicians and integrated ERP/CRM solutions for total customer satisfaction.
                   </p>
                 </div>
               </div>

@@ -99,53 +99,57 @@ export default function Clients() {
   const clients = tab === "north" ? northClients : southClients;
 
   return (
-    <>
+    <div className="bg-slate-50 min-h-screen">
       <PageBanner
         title="Our Clients"
-        subtitle="We divide our clients in terms of North and South of Pakistan."
+        subtitle="Trusted by the largest textile manufacturers across the North and South of Pakistan."
         image="/images/photo-1556761175-5973dc0f32e7-w1920.jpg"
       />
 
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center gap-2 mb-12">
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Beautiful Toggle Buttons */}
+          <div className="flex justify-center gap-4 mb-16">
             <button
               onClick={() => setTab("north")}
-              className={`px-6 py-3 rounded-lg font-semibold text-sm transition-colors ${
+              className={`px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
                 tab === "north"
-                  ? "bg-atc-red text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  ? "bg-slate-900 text-white shadow-lg scale-105"
+                  : "bg-white text-slate-500 hover:text-slate-900 border border-slate-200 hover:border-slate-400 hover:bg-slate-50"
               }`}
             >
               North Clients
             </button>
             <button
               onClick={() => setTab("south")}
-              className={`px-6 py-3 rounded-lg font-semibold text-sm transition-colors ${
+              className={`px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
                 tab === "south"
-                  ? "bg-atc-red text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  ? "bg-slate-900 text-white shadow-lg scale-105"
+                  : "bg-white text-slate-500 hover:text-slate-900 border border-slate-200 hover:border-slate-400 hover:bg-slate-50"
               }`}
             >
               South Clients
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {clients.map((name) => (
               <div
                 key={name}
-                className="group relative bg-white border border-gray-200 rounded-xl overflow-hidden h-32 cursor-default hover:border-atc-green/50 hover:shadow-lg transition-all duration-300"
+                className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden h-36 cursor-default hover:border-gold-300 hover:shadow-xl transition-all duration-500"
               >
-                <div className="absolute inset-0 flex items-center justify-center p-5 transition-all duration-400 group-hover:opacity-0 group-hover:scale-90">
+                <div className="absolute inset-0 flex items-center justify-center p-6 transition-all duration-500 group-hover:opacity-0 group-hover:scale-90">
                   <img
                     src={`/clients/${clientLogos[name]}`}
                     alt={name}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                   />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex items-center justify-center p-4 opacity-0 transition-all duration-400 group-hover:opacity-100">
-                  <span className="text-white text-sm font-bold text-center">
+
+                {/* Updated hover state overlay using Slate theme */}
+                <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-[2px] flex items-center justify-center p-4 opacity-0 transition-all duration-500 group-hover:opacity-100 border-b-4 border-gold-500">
+                  <span className="text-white text-sm font-bold text-center tracking-wide leading-relaxed drop-shadow-md">
                     {name}
                   </span>
                 </div>
@@ -154,6 +158,6 @@ export default function Clients() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

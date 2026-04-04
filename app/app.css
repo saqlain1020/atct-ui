@@ -1,37 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "Inter", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --color-navy-50: #e8edf3;
-  --color-navy-100: #c5d0e0;
-  --color-navy-200: #9fb1cb;
-  --color-navy-300: #7892b5;
-  --color-navy-400: #5a7aa5;
-  --color-navy-500: #3c6395;
-  --color-navy-600: #355a88;
-  --color-navy-700: #2c4e76;
-  --color-navy-800: #1a2a3a;
-  --color-navy-900: #0d1b2a;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
 
-  --color-atc-green: #2980b9;
-  --color-atc-green-dark: #1a6da0;
-  --color-atc-green-light: #5dade2;
-  --color-atc-red: #c0392b;
-  --color-atc-red-dark: #a93226;
-  --color-atc-red-light: #e74c3c;
-  --color-atc-blue: #1a3a5c;
+  --color-gold-50: #fbf9f1;
+  --color-gold-100: #f5eedb;
+  --color-gold-200: #ebdcb5;
+  --color-gold-300: #dfc285;
+  --color-gold-400: #d4a75b;
+  --color-gold-500: #c98e3b;
+  --color-gold-600: #b57230;
+  --color-gold-700: #96562a;
+  --color-gold-800: #7e4628;
+  --color-gold-900: #653923;
+
+  /* Custom Animations */
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-kenburns: kenburns 12s ease-out forwards;
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 html,
 body {
-  @apply bg-white text-gray-800;
+  @apply bg-slate-50 text-slate-800;
   scroll-behavior: smooth;
+  font-family: var(--font-sans);
 }
 
 .page-banner {
-  background: linear-gradient(135deg, var(--color-navy-900), var(--color-navy-700));
+  background: linear-gradient(135deg, var(--color-slate-900), var(--color-slate-800));
 }
 
 /* ─── Hero slideshow ─── */
@@ -41,11 +51,12 @@ body {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+  transition: opacity 1.5s ease-in-out;
   will-change: opacity, transform;
 }
 .hero-slide.active {
   opacity: 1;
+  z-index: 10;
 }
 .hero-slide::after {
   content: "";
@@ -53,19 +64,58 @@ body {
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.25) 50%,
-    rgba(0, 0, 0, 0.1) 100%
+    rgba(2, 6, 23, 0.85) 0%,
+    rgba(2, 6, 23, 0.6) 50%,
+    rgba(2, 6, 23, 0.2) 100%
   );
 }
 
-/* Ken Burns slow zoom */
 @keyframes kenburns {
   0% { transform: scale(1); }
-  100% { transform: scale(1.12); }
+  100% { transform: scale(1.1); }
 }
-.hero-slide.active {
-  animation: kenburns 8s ease-out forwards;
+.hero-slide.active img {
+  animation: var(--animate-kenburns);
+}
+
+/* ─── Infinite Marquee ─── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: var(--animate-marquee);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Bento Grid Hover FX ─── */
+.bento-card {
+  @apply relative overflow-hidden rounded-2xl bg-white border border-slate-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1;
+}
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+.bento-card:hover::before {
+  opacity: 0.8;
+}
+.bento-card img {
+  @apply absolute inset-0 w-full h-full object-cover transition-transform duration-700;
+}
+.bento-card:hover img {
+  transform: scale(1.05);
+}
+.bento-content {
+  @apply relative z-20 flex flex-col justify-end h-full p-8;
 }
 
 /* ─── Scroll-reveal animations ─── */
@@ -82,131 +132,15 @@ body {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
 
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(50px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-scale.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ─── Hero content entrance ─── */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero-content-animate > * {
-  opacity: 0;
-  animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.hero-content-animate > *:nth-child(1) { animation-delay: 0.3s; }
-.hero-content-animate > *:nth-child(2) { animation-delay: 0.5s; }
-.hero-content-animate > *:nth-child(3) { animation-delay: 0.7s; }
-.hero-content-animate > *:nth-child(4) { animation-delay: 0.9s; }
-
-/* ─── Slideshow dots ─── */
-.slide-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-.slide-dot.active {
-  background: white;
-  border-color: white;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
-
-/* ─── Navbar transition ─── */
-/* ─── Flip card ─── */
-.flip-card {
-  perspective: 900px;
-  height: 220px;
-}
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-
-/* ─── Masonry card text reveal ─── */
-.masonry-card .masonry-overlay {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.masonry-card:hover .masonry-overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-.masonry-card:hover .masonry-img {
-  transform: scale(1.08);
-  filter: brightness(0.5);
-}
-.masonry-card .masonry-img {
-  transition: transform 0.6s ease, filter 0.4s ease;
-}
-.masonry-card .masonry-title {
-  transition: transform 0.4s ease;
-}
-.masonry-card:hover .masonry-title {
-  transform: translateY(-8px);
-}
-
+/* ─── Navbar transitions ─── */
 .navbar-transparent {
   background: transparent;
   transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
 .navbar-solid {
-  background: var(--color-navy-900);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
   transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }

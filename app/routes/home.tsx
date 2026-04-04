@@ -1,416 +1,340 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router";
-import { SectionHeading } from "~/components/SectionHeading";
 import { useScrollReveal } from "~/hooks/useScrollReveal";
 import {
-  Handshake,
-  Users,
-  HeadsetIcon,
-  Wrench,
-  Package,
-  Megaphone,
   ArrowRight,
-  ExternalLink,
-  ChevronLeft,
   ChevronRight,
+  Globe,
+  Settings,
+  ShieldCheck,
+  Zap,
+  TrendingUp,
+  Award
 } from "lucide-react";
 import Img1 from "public/banner/1.jpg";
 import Img2 from "public/banner/2.jpg";
 import Img3 from "public/banner/3.jpg";
-import BoninoLogo from "public/partners/bonino.png";
 import MargasaLogo from "public/partners/margasa.jpg";
-import SaurerJintanLogo from "public/partners/saurer-jintan.jpg";
+import SaurerLogo from "public/partners/saurer.png";
 import NeuenhauserLogo from "public/partners/neuenhauser.png";
+import SuessenLogo from "public/partners/suessen.jpg";
 
 export function meta() {
   return [
-    { title: "ATC - Associated Technology Consultants" },
+    { title: "ATC Technology - B2B Textile Solutions in Pakistan" },
     {
       name: "description",
       content:
-        "The leading one stop B2B supplier of textile systems, technological components & services to the Textile Industry in Pakistan.",
+        "ATC Technology (ATCT) provides full sales service to an extensive customer base throughout the textile industry in Pakistan. B2B sales and marketing of textile solutions with added value through technological services.",
     },
   ];
 }
 
 const heroSlides = [
   {
-    image:
-      Img1,
-    label: "WHO WE ARE",
-    heading: "WELCOME TO ATC",
-    text: "We value our clients as assets and are always looking forward to developing cordial and long term relationships with them. We are involved in different kinds of businesses.",
+    image: Img1,
+    label: "B2B Textile Solutions",
+    heading: "Full Sales Service Across Pakistan",
+    text: "ATC Technology provides full sales service to an extensive customer base throughout the textile industry in Pakistan.",
   },
   {
-    image:
-      Img2,
-    label: "WHAT WE DO",
-    heading: "TEXTILE TECHNOLOGY EXPERTS",
-    text: "With over 50 years of experience, ATC is the leading B2B supplier of textile systems, technological components and services to the Pakistani Textile Industry.",
+    image: Img2,
+    label: "Advanced Engineering",
+    heading: "Future-Ready Plant Automation",
+    text: "Core competence: B2B sales and marketing of textile solutions. Added value through technological services from world-class principals.",
   },
   {
-    image:
-      Img3,
-    label: "OUR COMMITMENT",
-    heading: "50 YEARS OF EXCELLENCE",
-    text: "From BMR solutions and new machinery to plant automation and green technologies, we deliver innovative solutions that drive your business forward.",
-  },
-];
-
-const features = [
-  {
-    icon: Handshake,
-    title: "Fair Dealing with Clients",
-    description: "Fair Dealing",
-  },
-  {
-    icon: Users,
-    title: "Effective Customer Relationship",
-    description: "Effective Customer Relationship Management Systems.",
-  },
-  {
-    icon: HeadsetIcon,
-    title: "Professional Customer Service",
-    description: "Professional Customer Service from Pre-Sales to Post-Sales.",
-  },
-  {
-    icon: Wrench,
-    title: "Technical Support to the Principals",
-    description:
-      "Technical Support to the Principals Fully Equipped & Trained Service Centers in Lahore & Karachi.",
-  },
-  {
-    icon: Package,
-    title: "Essential Spares and Travelers Stocks",
-    description:
-      "Essential Spares & Travelers Stocks in our Two Warehouses (Lahore & Karachi)",
-  },
-  {
-    icon: Megaphone,
-    title: "Organize Direct Marketing",
-    description:
-      "Organize Direct Marketing through Events & Exhibitions, Seminars, Open Days & Newsletters for our Valued Principals.",
-  },
-];
-
-const machines = [
-  {
-    name: "Bonino Carding Machines",
-    description: "Cotton cards, Non-woven cards, woolen cards, Fiber preparation machines",
-    logo: BoninoLogo,
-  },
-  {
-    name: "Margasa",
-    description: "Hard & Soft Waste Recycling Line",
-    logo: MargasaLogo,
-  },
-  {
-    name: "Saurer Jintan",
-    description: "Blowroom and carding machines",
-    logo: SaurerJintanLogo,
-  },
-  {
-    name: "Neuenhauser",
-    description: "Palletising & Cone Transport Systems",
-    logo: NeuenhauserLogo,
+    image: Img3,
+    label: "Total Customer Satisfaction",
+    heading: "Pre-Sales to Post-Sales",
+    text: "Fully equipped Service Centers in Karachi and Lahore with high caliber technicians and integrated ERP/CRM solutions to manage your needs.",
   },
 ];
 
 const clientNames: { name: string; logo: string }[] = [
-  { name: "Gul Ahmed Textile", logo: "gul-ahmed-textile.png" },
+  { name: "Gul Ahmed", logo: "gul-ahmed-textile.png" },
   { name: "Nishat Mills", logo: "nishat-mills.png" },
   { name: "Interloop", logo: "interloop.png" },
   { name: "Ibrahim Fibres", logo: "ibrahim-fibres.png" },
   { name: "Sapphire Group", logo: "sapphire-group.png" },
   { name: "Artistic Milliners", logo: "artistic-milliners.png" },
-  { name: "Feroze1888 Mills Ltd", logo: "feroze1888-mills-ltd.png" },
-  { name: "Al Karam Group", logo: "al-karam-group.png" },
+  { name: "Feroze1888", logo: "feroze1888-mills-ltd.png" },
+  { name: "Al Karam", logo: "al-karam-group.png" },
   { name: "Masood Textiles", logo: "masood-textiles.png" },
   { name: "Soorty Group", logo: "soorty-group.png" },
-  { name: "Yunus Brothers Group", logo: "yunus-brothers-group.png" },
-  { name: "Gadoon Textile Mills", logo: "gadoon-textile-mills.png" },
 ];
 
-const teamMembers = [
-  {
-    name: "Zahid Majeed",
-    role: "Chief Executive Officer",
-    image:
-      "/images/photo-1560250097-0b93528c311a-w600.jpg",
-  },
-  {
-    name: "Abrar Hasan",
-    role: "Director",
-    image:
-      "/images/photo-1472099645785-5658abf4ff4e-w600.jpg",
-  },
+const partners = [
+  { name: "Saurer Twisting", logo: SaurerLogo, desc: "Two-For-One Twisting" },
+  { name: "Neuenhauser", logo: NeuenhauserLogo, desc: "Palletising & Transport" },
+  { name: "Suessen", logo: SuessenLogo, desc: "EliTe Compact Systems" },
+  { name: "Margasa", logo: MargasaLogo, desc: "Waste Recycling Lines" },
 ];
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slideKey, setSlideKey] = useState(0);
 
   useScrollReveal();
 
-  const goToSlide = useCallback((index: number) => {
-    setCurrentSlide(index);
-    setSlideKey((k) => k + 1);
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   }, []);
 
-  const nextSlide = useCallback(() => {
-    goToSlide((currentSlide + 1) % heroSlides.length);
-  }, [currentSlide, goToSlide]);
-
-  const prevSlide = useCallback(() => {
-    goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length);
-  }, [currentSlide, goToSlide]);
-
   useEffect(() => {
-    const timer = setInterval(nextSlide, 6000);
+    const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
   }, [nextSlide]);
 
   return (
-    <>
-      {/* ═══════ HERO SLIDESHOW ═══════ */}
-      <section className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden">
+    <div className="bg-slate-50 overflow-hidden">
+      {/* ═══════ HERO SECTION ═══════ */}
+      <section className="relative h-screen min-h-[700px] bg-slate-950 flex items-center overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div
-            key={`${i}-${i === currentSlide ? slideKey : "static"}`}
+            key={i}
             className={`hero-slide ${i === currentSlide ? "active" : ""}`}
           >
             <img
               src={slide.image}
-              alt=""
+              alt={slide.heading}
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         ))}
 
-        {/* Content overlay */}
-        <div className="absolute inset-0 flex items-end pb-24 md:items-center md:pb-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div
-              key={slideKey}
-              className="hero-content-animate max-w-xl bg-navy-900/70 backdrop-blur-sm p-8 md:p-10 border-l-4 border-atc-blue"
-            >
-              <span className="inline-block bg-atc-blue text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5">
-                {heroSlides[currentSlide].label}
-              </span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mt-4 tracking-tight">
-                {heroSlides[currentSlide].heading}
-              </h1>
-              <p className="mt-4 text-sm md:text-base text-gray-300 leading-relaxed">
-                {heroSlides[currentSlide].text}
-              </p>
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-block px-4 py-1.5 mb-6 rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-400 text-sm font-semibold tracking-wider uppercase backdrop-blur-md">
+              {heroSlides[currentSlide].label}
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+              {heroSlides[currentSlide].heading}
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-10 max-w-xl">
+              {heroSlides[currentSlide].text}
+            </p>
+            <div className="flex flex-wrap gap-4">
               <Link
-                to="/about-us/overview"
-                className="inline-block mt-6 border-2 border-white/70 hover:bg-white hover:text-navy-900 text-white text-sm font-bold uppercase tracking-wider px-8 py-3 transition-all duration-300"
+                to="/services"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold rounded-lg transition-colors duration-300"
               >
-                Read More
+                Explore Solutions
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-sm transition-colors duration-300 border border-white/10"
+              >
+                Contact Sales
               </Link>
             </div>
           </div>
         </div>
 
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/25 text-white flex items-center justify-center transition-all"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/25 text-white flex items-center justify-center transition-all"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goToSlide(i)}
-              className={`slide-dot ${i === currentSlide ? "active" : ""}`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+        {/* Slide Indicators */}
+        <div className="absolute bottom-10 left-0 w-full z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-3">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === currentSlide ? "w-12 bg-gold-400" : "w-6 bg-white/30 hover:bg-white/50"
+                  }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══════ WHAT WE OFFER ═══════ */}
-      <section className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="reveal">
-            <SectionHeading
-              title="What we offer"
-              subtitle="The leading one stop B2B supplier of textile systems, technological components & services to the Textile Industry in Pakistan! We provide a full sales service to an extensive customer base throughout the textile industry in Pakistan."
-            />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, i) => (
+      {/* ═══════ TRUSTED BY MARQUEE ═══════ */}
+      <section className="py-12 bg-white border-b border-slate-200 overflow-hidden flex flex-col justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-8 text-center">
+          <p className="text-sm font-semibold tracking-widest text-slate-400 uppercase">
+            Trusted by Pakistan's Top Textile Manufacturers
+          </p>
+        </div>
+        <div className="relative flex w-full overflow-hidden group">
+          <div className="flex animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused]">
+            {[...clientNames, ...clientNames, ...clientNames].map((client, i) => (
               <div
-                key={feature.title}
-                className={`reveal reveal-delay-${(i % 3) + 1} flip-card`}
+                key={i}
+                className="flex items-center justify-center w-[200px] h-16 mx-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
               >
-                <div className="flip-card-inner">
-                  <div className="flip-card-front bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center p-7 text-center">
-                    <div className="w-16 h-16 rounded-xl bg-linear-to-br from-atc-green/20 to-atc-green/5 flex items-center justify-center mb-5">
-                      <feature.icon className="w-8 h-8 text-atc-green" />
+                <img
+                  src={`/clients/${client.logo}`}
+                  alt={client.name}
+                  className="max-h-12 max-w-[140px] object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ BENTO GRID : CAPABILITIES ═══════ */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal max-w-3xl mb-16">
+            <h2 className="text-sm font-bold text-gold-600 tracking-widest uppercase mb-3">
+              Our Capabilities
+            </h2>
+            <h3 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
+              Comprehensive B2B Solutions for Modern Textiles.
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Main large card */}
+            <div className="reveal reveal-delay-1 md:col-span-2 md:row-span-2 bento-card min-h-[400px]">
+              <img src="/images/photo-1497366811353-6870744d04b2-w700.jpg" alt="Machinery" />
+              <div className="bento-content">
+                <Settings className="w-10 h-10 text-gold-400 mb-6" />
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  Machinery & Plant Automation
+                </h4>
+                <p className="text-slate-200 text-lg max-w-md mb-6">
+                  End-to-end BMR solutions, complete spinning lines, and waste recycling systems from world-renowned principals.
+                </p>
+                <Link to="/services" className="inline-flex items-center text-gold-400 font-semibold group w-max">
+                  View Systems <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Top right card */}
+            <div className="reveal reveal-delay-2 bento-card min-h-[250px]">
+              <img src="/images/photo-1441986300917-64674bd600d8-w1920.jpg" alt="Parts" />
+              <div className="bento-content">
+                <ShieldCheck className="w-8 h-8 text-gold-400 mb-4" />
+                <h4 className="text-xl font-bold text-white mb-2">Parts & Spares</h4>
+                <p className="text-slate-300 text-sm">
+                  Essential spares and travelers stocked heavily in our Lahore & Karachi warehouses to ensure zero downtime.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom right card */}
+            <div className="reveal reveal-delay-3 bento-card min-h-[250px] bg-slate-900 border-none">
+              <div className="p-8 h-full flex flex-col justify-between">
+                <div>
+                  <Zap className="w-8 h-8 text-gold-500 mb-4" />
+                  <h4 className="text-xl font-bold text-white mb-2">Technical Support</h4>
+                  <p className="text-slate-400 text-sm">
+                    Factory-trained service engineers available 24/7 for mechanical and electronic diagnostics.
+                  </p>
+                </div>
+                <Link to="/contact" className="inline-flex items-center text-gold-500 font-semibold group text-sm mt-6">
+                  Contact Support <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ THE ATC ADVANTAGE ═══════ */}
+      <section className="py-24 bg-white border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+                Why 50+ Years of Experience Matters.
+              </h2>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                ATC Technology provides full sales service to an extensive customer base throughout the textile industry in Pakistan.
+                We believe in Total Customer Satisfaction and provide after-sales-service through our fully equipped
+                Service Centers, deployed with high caliber technicians and integrated ERP/CRM solutions.
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  { icon: Globe, title: "Global Network", desc: "Partners in Germany, Switzerland, Italy, China, & more." },
+                  { icon: Award, title: "Unmatched Quality", desc: "Rigorous vetting of principals to ensure Tier-1 technology." },
+                  { icon: TrendingUp, title: "Scalable Growth", desc: "From single machine replacements to turnkey greenfield projects." }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 group">
+                    <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-200 shadow-sm group-hover:border-gold-300 group-hover:bg-gold-50 transition-colors">
+                      <item.icon className="w-6 h-6 text-slate-700 group-hover:text-gold-600 transition-colors" />
                     </div>
-                    <h3 className="text-lg font-bold text-navy-900">
-                      {feature.title}
-                    </h3>
+                    <div>
+                      <h4 className="text-lg font-bold text-slate-900">{item.title}</h4>
+                      <p className="text-slate-600">{item.desc}</p>
+                    </div>
                   </div>
-                  <div className="flip-card-back bg-linear-to-br from-atc-green to-atc-blue flex flex-col items-center justify-center p-7 text-center">
-                    <feature.icon className="w-10 h-10 text-white/30 mb-4" />
-                    <h3 className="text-base font-bold text-white mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-white/85 text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="reveal reveal-delay-2 relative">
+              <div className="absolute -inset-4 bg-slate-100 rounded-[2.5rem] -z-10 transform rotate-3"></div>
+              <img
+                src="/images/photo-1551434678-e076c223a692-w1920.jpg"
+                alt="Corporate discussion"
+                className="rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════ MACHINES & SYSTEMS ═══════ */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="reveal">
-            <SectionHeading
-              title="Machines & Systems"
-              subtitle="We value our clients as assets, and we are always looking forward for cordial and long term relationship with them. We are involved in different kinds of business and enjoying with the most cordial business relations established with our suppliers and our clients throughout the world."
-            />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {machines.map((machine, i) => (
-              <div
-                key={machine.name}
-                className={`reveal reveal-delay-${i + 1} partner-card group relative rounded-2xl overflow-hidden cursor-pointer border border-gray-200 bg-white h-48`}
-              >
-                <div className="absolute inset-0 flex items-center justify-center p-8 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
-                  <img
-                    src={machine.logo}
-                    alt={machine.name}
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex flex-col items-center justify-center p-5 text-center opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                  <h4 className="text-white font-bold text-lg mb-2">
-                    {machine.name}
-                  </h4>
-                  <p className="text-white/80 text-sm leading-relaxed mb-3">
-                    {machine.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-atc-green-light text-sm font-semibold">
-                    Visit Website <ExternalLink className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ═══════ GLOBAL PRINCIPALS ═══════ */}
+      <section className="py-24 bg-slate-950 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-900/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {/* ═══════ OUR CLIENTS ═══════ */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
-        <img
-          src="/images/photo-1441986300917-64674bd600d8-w1920.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-navy-900/90" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="reveal">
-            <SectionHeading
-              title="Our Clients"
-              subtitle="Celebrating 50 years of service to the Pakistani Textile Industry!"
-              light
-            />
+          <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="max-w-2xl">
+              <h2 className="text-sm font-bold text-gold-500 tracking-widest uppercase mb-3">
+                Our Global Principals
+              </h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+                Partnering with the World's Best.
+              </h3>
+            </div>
+            <Link to="/partners" className="inline-flex items-center text-slate-300 hover:text-white font-medium group transition-colors">
+              View all partners <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {clientNames.map((client, i) => (
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {partners.map((partner, i) => (
               <div
-                key={client.name}
-                className={`reveal-scale reveal-delay-${(i % 5) + 1} group relative bg-white rounded-xl overflow-hidden h-28 cursor-default hover:shadow-lg hover:shadow-atc-green/20 hover:-translate-y-1 transition-all duration-300`}
+                key={partner.name}
+                className={`reveal reveal-delay-${(i % 4) + 1} group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 cursor-pointer text-center flex flex-col items-center justify-center h-64`}
               >
-                <div className="absolute inset-0 flex items-center justify-center p-4 transition-all duration-400 group-hover:opacity-0 group-hover:scale-90">
+                <div className="h-20 mb-6 flex items-center justify-center w-full">
                   <img
-                    src={`/clients/${client.logo}`}
-                    alt={client.name}
-                    className="max-h-full max-w-full object-contain"
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
                   />
                 </div>
-                <div className="absolute inset-0 bg-linear-to-br from-navy-900 to-atc-blue flex items-center justify-center p-3 opacity-0 transition-all duration-400 group-hover:opacity-100">
-                  <span className="text-white text-xs text-center font-bold">
-                    {client.name}
-                  </span>
-                </div>
+                <h4 className="text-white font-bold text-lg">{partner.name}</h4>
+                <p className="text-slate-400 text-sm mt-2">{partner.desc}</p>
               </div>
             ))}
-          </div>
-          <div className="text-center mt-12 reveal">
-            <Link
-              to="/clients"
-              className="inline-flex items-center gap-2 bg-atc-red hover:bg-atc-red-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-red/25"
-            >
-              View More <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* ═══════ MEET OUR PEOPLE ═══════ */}
-      <section className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="reveal">
-            <SectionHeading
-              title="Meet Our People"
-              subtitle="We are a diverse multinational with Asian roots and a proud entrepreneurial heritage. Our people are the reason for our success and the source of our strength and expertise."
-            />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            {teamMembers.map((person, i) => (
-              <div
-                key={person.name}
-                className={`${i === 0 ? "reveal-left" : "reveal-right"} bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group hover:-translate-y-1`}
-              >
-                <div className="h-64 relative overflow-hidden">
-                  <img
-                    src={person.image}
-                    alt={person.name}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-atc-green/0 group-hover:bg-atc-green/10 transition-colors duration-500" />
-                </div>
-                <div className="p-7">
-                  <h3 className="text-xl font-bold text-navy-900 group-hover:text-atc-green transition-colors">
-                    {person.name}
-                  </h3>
-                  <p className="text-atc-red font-semibold text-sm mt-1">
-                    {person.role}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12 reveal">
-            <Link
-              to="/about-us/our-team"
-              className="inline-flex items-center gap-2 bg-atc-red hover:bg-atc-red-dark text-white font-bold uppercase tracking-wider text-sm px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-atc-red/25"
-            >
-              View More <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+      {/* ═══════ CTA / CONTACT ═══════ */}
+      <section className="py-24 bg-gold-500 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/photo-1497366216548-37526070297c-w1920.jpg')] mix-blend-overlay opacity-20 bg-cover bg-center"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 reveal">
+          <h2 className="text-4xl md:text-6xl font-black text-slate-950 mb-6 tracking-tight">
+            Ready to upgrade your production?
+          </h2>
+          <p className="text-xl text-slate-900/80 mb-10 max-w-2xl mx-auto font-medium">
+            Connect with our engineering consultants to discuss BMR, plant automation, and process optimization for your facility.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center px-10 py-5 bg-slate-950 hover:bg-slate-800 text-white font-bold rounded-xl text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+          >
+            Schedule a Consultation <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -4,33 +4,12 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "public/logo.jpg";
 
 const navItems = [
-  {
-    label: "About Us",
-    children: [
-      { label: "Overview", to: "/about-us/overview" },
-      { label: "Our Team", to: "/about-us/our-team" },
-      { label: "Global Network", to: "/about-us/global-network" },
-    ],
-  },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
   { label: "Clients", to: "/clients" },
-  {
-    label: "Global Partners",
-    children: [
-      { label: "Machines and Systems", to: "/global-partners/machines-and-systems" },
-      { label: "Technological Components", to: "/global-partners/technological-components" },
-      { label: "After Sales Service", to: "/global-partners/after-sales-service" },
-    ],
-  },
-  { label: "Technical", to: "/technical" },
-  {
-    label: "Media Center",
-    children: [
-      { label: "News and Events", to: "/media-center/news-and-events" },
-      { label: "Gallery", to: "/media-center/gallery" },
-      { label: "CSR", to: "/media-center/csr" },
-    ],
-  },
-  { label: "Contact Us", to: "/contact-us" },
+  { label: "Partners", to: "/partners" },
+  { label: "Media", to: "/media" },
+  { label: "Contact Us", to: "/contact" },
 ];
 
 export function Navbar() {
@@ -77,7 +56,7 @@ export function Navbar() {
                 <div key={item.label} className="relative group">
                   <button
                     className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-all duration-200 ${isParentActive(item.children)
-                      ? "text-atc-green"
+                      ? "text-gold-500"
                       : "text-white/90 hover:text-white"
                       }`}
                   >
@@ -91,8 +70,8 @@ export function Navbar() {
                           key={child.to}
                           to={child.to}
                           className={`block px-5 py-3 text-sm transition-all duration-150 border-l-3 ${isActive(child.to)
-                            ? "text-atc-green bg-green-50/60 font-semibold border-atc-green"
-                            : "text-gray-700 hover:bg-gray-50 hover:text-navy-900 hover:pl-6 border-transparent"
+                            ? "text-gold-500 bg-green-50/60 font-semibold border-gold-500"
+                            : "text-gray-700 hover:bg-gray-50 hover:text-slate-950 hover:pl-6 border-transparent"
                             }`}
                         >
                           {child.label}
@@ -106,13 +85,13 @@ export function Navbar() {
                   key={item.label}
                   to={item.to!}
                     className={`px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-all duration-200 relative ${isActive(item.to!)
-                      ? "text-atc-green"
+                      ? "text-gold-500"
                       : "text-white/90 hover:text-white"
                       }`}
                 >
                   {item.label}
                   {isActive(item.to!) && (
-                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-atc-green rounded-full" />
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-gold-500 rounded-full" />
                   )}
                 </Link>
               )
@@ -122,7 +101,7 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-white hover:text-atc-green p-2 transition-colors"
+            className="lg:hidden text-white hover:text-gold-500 p-2 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -135,7 +114,7 @@ export function Navbar() {
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
           }`}
       >
-        <div className="bg-navy-900/98 backdrop-blur-md border-t border-white/10 px-4 py-4 space-y-1">
+        <div className="bg-slate-950/98 backdrop-blur-md border-t border-white/10 px-4 py-4 space-y-1">
           {navItems.map((item) =>
             item.children ? (
               <div key={item.label}>
@@ -155,13 +134,13 @@ export function Navbar() {
                   className={`overflow-hidden transition-all duration-200 ${openDropdown === item.label ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
                     }`}
                 >
-                  <div className="ml-4 border-l-2 border-atc-green/30 pl-4 py-1 space-y-0.5">
+                  <div className="ml-4 border-l-2 border-gold-500/30 pl-4 py-1 space-y-0.5">
                     {item.children.map((child) => (
                       <Link
                         key={child.to}
                         to={child.to}
                         className={`block px-3 py-2.5 text-sm rounded-lg transition-all ${isActive(child.to)
-                          ? "text-atc-green font-semibold bg-atc-green/5"
+                          ? "text-gold-500 font-semibold bg-gold-500/5"
                           : "text-gray-300 hover:text-white hover:bg-white/5"
                           }`}
                       >
@@ -176,7 +155,7 @@ export function Navbar() {
                 key={item.label}
                 to={item.to!}
                   className={`block px-3 py-3 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${isActive(item.to!)
-                    ? "text-atc-green bg-atc-green/5"
+                    ? "text-gold-500 bg-gold-500/5"
                     : "text-white/90 hover:text-white hover:bg-white/5"
                     }`}
               >
