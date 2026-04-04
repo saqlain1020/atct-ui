@@ -29,7 +29,6 @@
 
   /* Custom Animations */
   --animate-marquee: marquee 35s linear infinite;
-  --animate-kenburns: kenburns 12s ease-out forwards;
   --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -44,38 +43,25 @@ body {
   background: linear-gradient(135deg, var(--color-slate-900), var(--color-slate-800));
 }
 
-/* ─── Hero slideshow ─── */
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  will-change: opacity, transform;
-}
-.hero-slide.active {
-  opacity: 1;
-  z-index: 10;
-}
-.hero-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(2, 6, 23, 0.85) 0%,
-    rgba(2, 6, 23, 0.6) 50%,
-    rgba(2, 6, 23, 0.2) 100%
-  );
+/* ─── Hero (Lottie + Artifacts) ─── */
+.hero-grid-bg {
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-@keyframes kenburns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+.hero-text-gradient {
+  background: linear-gradient(135deg, var(--color-gold-400) 0%, var(--color-gold-300) 50%, var(--color-gold-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.hero-slide.active img {
-  animation: var(--animate-kenburns);
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+.hero-float {
+  animation: heroFloat 8s ease-in-out infinite;
 }
 
 /* ─── Infinite Marquee ─── */

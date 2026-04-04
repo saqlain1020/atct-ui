@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import Lottie from "lottie-react";
 import { useScrollReveal } from "~/hooks/useScrollReveal";
 import {
   ArrowRight,
@@ -9,11 +10,8 @@ import {
   ShieldCheck,
   Zap,
   TrendingUp,
-  Award
+  Award,
 } from "lucide-react";
-import Img1 from "public/banner/1.jpg";
-import Img2 from "public/banner/2.jpg";
-import Img3 from "public/banner/3.jpg";
 import MargasaLogo from "public/partners/margasa.jpg";
 import SaurerLogo from "public/partners/saurer.png";
 import NeuenhauserLogo from "public/partners/neuenhauser.png";
@@ -29,27 +27,6 @@ export function meta() {
     },
   ];
 }
-
-const heroSlides = [
-  {
-    image: Img1,
-    label: "B2B Textile Solutions",
-    heading: "Full Sales Service Across Pakistan",
-    text: "ATC Technology provides full sales service to an extensive customer base throughout the textile industry in Pakistan.",
-  },
-  {
-    image: Img2,
-    label: "Advanced Engineering",
-    heading: "Future-Ready Plant Automation",
-    text: "Core competence: B2B sales and marketing of textile solutions. Added value through technological services from world-class principals.",
-  },
-  {
-    image: Img3,
-    label: "Total Customer Satisfaction",
-    heading: "Pre-Sales to Post-Sales",
-    text: "Fully equipped Service Centers in Karachi and Lahore with high caliber technicians and integrated ERP/CRM solutions to manage your needs.",
-  },
-];
 
 const clientNames: { name: string; logo: string }[] = [
   { name: "Gul Ahmed", logo: "gul-ahmed-textile.png" },
@@ -72,75 +49,136 @@ const partners = [
 ];
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [gearData, setGearData] = useState<Record<string, unknown> | null>(null);
+  const [gearSmData, setGearSmData] = useState<Record<string, unknown> | null>(null);
+  const [pulseData, setPulseData] = useState<Record<string, unknown> | null>(null);
 
   useScrollReveal();
 
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  }, []);
-
   useEffect(() => {
-    const timer = setInterval(nextSlide, 7000);
-    return () => clearInterval(timer);
-  }, [nextSlide]);
+    fetch("/lottie/gear.json").then((r) => r.json()).then(setGearData);
+    fetch("/lottie/gear-sm.json").then((r) => r.json()).then(setGearSmData);
+    fetch("/lottie/pulse.json").then((r) => r.json()).then(setPulseData);
+  }, []);
 
   return (
     <div className="bg-slate-50 overflow-hidden">
       {/* ═══════ HERO SECTION ═══════ */}
-      <section className="relative h-screen min-h-[700px] bg-slate-950 flex items-center overflow-hidden">
-        {heroSlides.map((slide, i) => (
-          <div
-            key={i}
-            className={`hero-slide ${i === currentSlide ? "active" : ""}`}
-          >
-            <img
-              src={slide.image}
-              alt={slide.heading}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-        ))}
+      <section className="relative min-h-screen bg-slate-950 flex items-center overflow-hidden">
+        {/* Dot grid background */}
+        <div className="hero-grid-bg absolute inset-0" />
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Gradient depth layers */}
+        <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-slate-900/90 to-slate-950" />
+        <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-[700px] h-[700px] bg-gold-500/4 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gold-900/6 rounded-full blur-[100px] pointer-events-none" />
+
+        {/* Lottie gears & floating artifacts */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {gearData && (
+            <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-[420px] h-[420px] md:w-[550px] md:h-[550px] lg:w-[680px] lg:h-[680px] opacity-[0.18]">
+              <Lottie animationData={gearData} loop autoplay />
+            </div>
+          )}
+          {gearSmData && (
+            <div className="hidden md:block absolute right-[12%] -top-[5%] w-[280px] h-[280px] lg:w-[380px] lg:h-[380px] opacity-[0.14]">
+              <Lottie animationData={gearSmData} loop autoplay />
+            </div>
+          )}
+          {gearSmData && (
+            <div className="hidden lg:block absolute left-[3%] bottom-[18%] w-[220px] h-[220px] opacity-[0.12] -scale-x-100">
+              <Lottie animationData={gearSmData} loop autoplay />
+            </div>
+          )}
+          {pulseData && (
+            <div className="hidden md:block absolute right-[35%] top-[18%] w-[200px] h-[200px] opacity-[0.15]">
+              <Lottie animationData={pulseData} loop autoplay />
+            </div>
+          )}
+
+          {/* Floating wireframe shapes */}
+          <div className="hero-float absolute right-[22%] bottom-[35%] text-gold-500/20" style={{ animationDelay: "0s" }}>
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 2L58 17V47L32 62L6 47V17Z" stroke="currentColor" strokeWidth="1" /></svg>
+          </div>
+          <div className="hero-float absolute left-[15%] top-[22%] text-gold-500/15" style={{ animationDelay: "2s" }}>
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="20" y="2" width="25" height="25" stroke="currentColor" strokeWidth="1" transform="rotate(45 20 20)" /></svg>
+          </div>
+          <div className="hero-float absolute right-[42%] bottom-[22%] text-gold-500/20" style={{ animationDelay: "4s" }}>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><line x1="14" y1="2" x2="14" y2="26" stroke="currentColor" strokeWidth="1.5" /><line x1="2" y1="14" x2="26" y2="14" stroke="currentColor" strokeWidth="1.5" /></svg>
+          </div>
+          <div className="hero-float absolute left-[8%] top-[58%] text-gold-500/10" style={{ animationDelay: "1s" }}>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="0.75" /><circle cx="24" cy="24" r="12" stroke="currentColor" strokeWidth="0.75" /></svg>
+          </div>
+          <div className="hero-float absolute right-[8%] top-[62%] text-gold-500/15" style={{ animationDelay: "3s" }}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 0L20 12L32 16L20 20L16 32L12 20L0 16L12 12Z" stroke="currentColor" strokeWidth="0.75" /></svg>
+          </div>
+
+          {/* Decorative gradient lines */}
+          <div className="absolute top-0 right-[30%] w-px h-[40%] bg-linear-to-b from-transparent via-gold-500/10 to-transparent" />
+          <div className="absolute bottom-0 left-[20%] w-px h-[30%] bg-linear-to-t from-transparent via-gold-500/7 to-transparent" />
+          <div className="absolute top-[40%] left-0 h-px w-[15%] bg-linear-to-r from-transparent via-gold-500/7 to-transparent" />
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-36">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 mb-6 rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-400 text-sm font-semibold tracking-wider uppercase backdrop-blur-md">
-              {heroSlides[currentSlide].label}
-            </span>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-              {heroSlides[currentSlide].heading}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-8 rounded-full border border-gold-400/20 bg-gold-400/5 backdrop-blur-md">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-400" />
+              </span>
+              <span className="text-gold-400 text-sm font-semibold tracking-wider uppercase">
+                Pioneers Since 1974
+              </span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.08] mb-6">
+              Engineering Excellence{" "}
+              <span className="hero-text-gradient">for Pakistan's</span>{" "}
+              Textile Industry
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-10 max-w-xl">
-              {heroSlides[currentSlide].text}
+
+            <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-2xl">
+              Full-service B2B textile solutions — from complete spinning lines
+              and plant automation to parts, spares, and factory-trained
+              technical support.
             </p>
+
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold rounded-lg transition-colors duration-300"
+                className="group inline-flex items-center justify-center px-8 py-4 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25"
               >
                 Explore Solutions
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-sm transition-colors duration-300 border border-white/10"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/20"
               >
-                Contact Sales
+                Talk to an Expert
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-10 left-0 w-full z-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-3">
-            {heroSlides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentSlide(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === currentSlide ? "w-12 bg-gold-400" : "w-6 bg-white/30 hover:bg-white/50"
-                  }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
+        {/* Stats bar */}
+        <div className="absolute bottom-0 left-0 w-full z-20 border-t border-white/6 bg-white/2 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { value: "50+", label: "Years of Experience" },
+              { value: "100+", label: "Textile Clients" },
+              { value: "2", label: "Service Centers" },
+              { value: "8+", label: "Partner Countries" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center md:text-left">
+                <div className="text-2xl md:text-3xl font-black text-gold-400 tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+                  {stat.label}
+                </div>
+              </div>
             ))}
           </div>
         </div>
